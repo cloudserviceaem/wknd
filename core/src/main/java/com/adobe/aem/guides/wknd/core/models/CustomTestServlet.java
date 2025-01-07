@@ -47,7 +47,7 @@ public class CustomTestServlet extends SlingSafeMethodsServlet {
                     response.getWriter().write("node is already present");
                 }else{
                     Resource newnode = resourceResolver.create(destRes, name, slingFolderProp);
-                    request.getResourceResolver().commit();
+                    resourceResolver.commit();
                     response.getWriter().write("node created" + newnode);
                 }
               
