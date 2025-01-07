@@ -11,7 +11,7 @@ public class WkndUtility {
 
     public static ResourceResolver getServiceResourceResolver(ResourceResolverFactory resourceResolverFactory) throws LoginException {
         Map<String, Object> map = new HashedMap<>();
-        map.put(ResourceResolverFactory.SUBSERVICE, "core-workflow-service");
+        map.put(ResourceResolverFactory.SUBSERVICE, "cloudDemo-service-user");
         return resourceResolverFactory.getServiceResourceResolver(map);
     }
 
