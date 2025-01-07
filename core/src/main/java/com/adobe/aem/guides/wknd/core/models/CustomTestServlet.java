@@ -7,14 +7,18 @@ import java.util.Objects;
 
 import javax.servlet.Servlet;
 
+import com.adobe.aem.guides.wknd.core.utility.WkndUtility;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.ServletResolverConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 @Component(service = { Servlet.class },property = {
     Constants.SERVICE_DESCRIPTION + "=Test service to validate mutable objects",
@@ -23,6 +27,9 @@ import org.osgi.service.component.annotations.Component;
     ServletResolverConstants.SLING_SERVLET_EXTENSIONS + "=txt"
 })
 public class CustomTestServlet extends SlingSafeMethodsServlet {
+
+    @Reference
+    private ResourceResolverFactory resourceResolverFactory;
 
     @Override
     protected void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws IOException{
@@ -33,15 +40,15 @@ public class CustomTestServlet extends SlingSafeMethodsServlet {
         final Map<String, Object> slingFolderProp = new HashMap<>();
         slingFolderProp.put("jcr:primaryType", "sling:Folder");
 
-        Resource destRes = request.getResourceResolver().getResource(reqPath);
-        try{
+        try(ResourceResolver resourceResolver = Objects.requireNonNull(WkndUtility.getServiceResourceResolver(resourceResolverFactory))){
+            Resource destRes = resourceResolver.getResource(reqPath);
             if (Objects.nonNull(destRes)) {
                 if (Objects.nonNull(destRes.getChild(name))) {
                     response.getWriter().write("node is already present");
                 }else{
-                    Resource newnode = request.getResourceResolver().create(destRes, name, slingFolderProp);
+                    Resource newnode = resourceResolver.create(destRes, name, slingFolderProp);
                     request.getResourceResolver().commit();
-                    response.getWriter().write("node created");
+                    response.getWriter().write("node created" + newnode);
                 }
               
             }
@@ -51,5 +58,7 @@ public class CustomTestServlet extends SlingSafeMethodsServlet {
         }
 
     }
+
+
     
 }
