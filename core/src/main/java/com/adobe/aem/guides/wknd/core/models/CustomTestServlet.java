@@ -19,8 +19,6 @@ import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Component(service = { Servlet.class },property = {
     Constants.SERVICE_DESCRIPTION + "=Test service to validate mutable objects",
@@ -29,9 +27,6 @@ import org.slf4j.LoggerFactory;
     ServletResolverConstants.SLING_SERVLET_EXTENSIONS + "=txt"
 })
 public class CustomTestServlet extends SlingSafeMethodsServlet {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(CustomTestServlet.class);
-
 
     @Reference
     private ResourceResolverFactory resourceResolverFactory;
@@ -46,10 +41,8 @@ public class CustomTestServlet extends SlingSafeMethodsServlet {
         slingFolderProp.put("jcr:primaryType", "sling:Folder");
 
         try(ResourceResolver resourceResolver = Objects.requireNonNull(WkndUtility.getServiceResourceResolver(resourceResolverFactory))){
-            LOGGER.info("Entered to craete the node");
             Resource destRes = resourceResolver.getResource(reqPath);
             if (Objects.nonNull(destRes)) {
-                LOGGER.info("destination resource exist");
                 if (Objects.nonNull(destRes.getChild(name))) {
                     response.getWriter().write("node is already present");
                 }else{
@@ -61,7 +54,6 @@ public class CustomTestServlet extends SlingSafeMethodsServlet {
             }
          
         }catch(Exception e){
-            LOGGER.info("Error occurred while creating the node " + e.getMessage());
             response.getWriter().write("node not created");
         }
 
