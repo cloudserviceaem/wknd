@@ -766,7 +766,7 @@ Bundle-DocURL:
 
             <!-- WKND Shared -->
             <dependency>
-                <groupId>com.training.adobe.aem.guides</groupId>
+                <groupId>com.adobe.aem.guides</groupId>
                 <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
                 <version>${wknd-shared.version}</version>
                 <type>zip</type>
