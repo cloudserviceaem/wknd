@@ -66,12 +66,12 @@
                             <artifactId>aem-guides-wknd.core</artifactId>
                             <target>/apps/wknd-packages/application/install</target>
                         </embedded>
-                        <embedded>
+                        <!-- <embedded>
                             <groupId>com.training.adobe.aem.guides</groupId>
                             <artifactId>aem-guides-wknd.ui.content</artifactId>
                             <type>zip</type>
                             <target>/apps/wknd-packages/content/install</target>
-                        </embedded>
+                        </embedded> -->
                         <embedded>
                             <groupId>com.training.adobe.aem.guides</groupId>
                             <artifactId>aem-guides-wknd.ui.config</artifactId>
@@ -217,12 +217,12 @@
                                     <artifactId>aem-guides-wknd.core</artifactId>
                                     <target>/apps/wknd-packages/application/install</target>
                                 </embedded>
-                                <embedded>
+                                <!-- <embedded>
                                     <groupId>com.training.adobe.aem.guides</groupId>
                                     <artifactId>aem-guides-wknd.ui.content</artifactId>
                                     <type>zip</type>
                                     <target>/apps/wknd-packages/content/install</target>
-                                </embedded>
+                                </embedded> -->
                                 <embedded>
                                     <groupId>com.training.adobe.aem.guides</groupId>
                                     <artifactId>aem-guides-wknd.ui.config</artifactId>
@@ -265,12 +265,12 @@
             </build>
               <dependencies>    
                 <!-- WKND Shared -->
-                <dependency>
+                <!-- <dependency>
                     <groupId>com.adobe.aem.guides</groupId>
                     <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
                     <version>${wknd-shared.version}</version>
                     <type>zip</type>
-                </dependency>        
+                </dependency>         -->
             </dependencies>
          </profile>
     </profiles>
@@ -319,10 +319,10 @@
             <artifactId>core.wcm.components.core</artifactId>                
         </dependency>
         <!-- WKND Shared -->
-        <dependency>
+        <!-- <dependency>
             <groupId>com.adobe.aem.guides</groupId>
             <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
             <type>zip</type>
-        </dependency>        
+        </dependency>         -->
     </dependencies>
 </project>
