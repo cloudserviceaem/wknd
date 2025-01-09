@@ -285,12 +285,12 @@
             <version>${project.version}</version>
             <type>zip</type>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>com.training.adobe.aem.guides</groupId>
             <artifactId>aem-guides-wknd.ui.content</artifactId>
             <version>${project.version}</version>
             <type>zip</type>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>com.training.adobe.aem.guides</groupId>
             <artifactId>aem-guides-wknd.ui.config</artifactId>
