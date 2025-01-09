@@ -22,7 +22,7 @@
     <parent>
         <groupId>com.adobe.aem.guides</groupId>
         <artifactId>aem-guides-wknd</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <version>3.3.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -82,7 +82,13 @@
                             <groupId>com.adobe.aem.guides</groupId>
                             <artifactId>aem-guides-wknd.ui.content.sample</artifactId>
                             <type>zip</type>
-                            <target>/apps/wknd-packages/sample/install</target>
+                            <target>/apps/wknd-packages/content/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>com.adobe.aem.guides</groupId>
+                            <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
+                            <type>zip</type>
+                            <target>/apps/wknd-vendor-packages/content/install</target>
                         </embedded>
                     </embeddeds>
                 </configuration>
@@ -187,13 +193,17 @@
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
+            <properties>
+                <wknd-shared.version>${wknd-shared.65.version}</wknd-shared.version>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.jackrabbit</groupId>
-                        <artifactId>filevault-package-maven-plugin</artifactId>
+                        <artifactId>filevault-package-maven-plugin</artifactId>                    
                         <extensions>true</extensions>
                         <configuration>
+                            <finalName>aem-guides-wknd.all-${version}-classic</finalName>
                             <group>com.adobe.aem.guides</group>
                             <embeddeds>
                                 <embedded>
@@ -242,11 +252,26 @@
                                     <artifactId>core.wcm.components.core</artifactId>
                                     <target>/apps/wknd-vendor-packages/application/install</target>
                                 </embedded>
+                                <embedded>
+                                    <groupId>com.adobe.aem.guides</groupId>
+                                    <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
+                                    <type>zip</type>
+                                    <target>/apps/wknd-vendor-packages/content/install</target>
+                                </embedded>                           
                             </embeddeds>
                         </configuration>
                     </plugin>
-            </plugins>
+                </plugins>
             </build>
+              <dependencies>    
+                <!-- WKND Shared -->
+                <dependency>
+                    <groupId>com.adobe.aem.guides</groupId>
+                    <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
+                    <version>${wknd-shared.version}</version>
+                    <type>zip</type>
+                </dependency>        
+            </dependencies>
          </profile>
     </profiles>
 
@@ -293,5 +318,11 @@
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.core</artifactId>                
         </dependency>
+        <!-- WKND Shared -->
+        <dependency>
+            <groupId>com.adobe.aem.guides</groupId>
+            <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
+            <type>zip</type>
+        </dependency>        
     </dependencies>
 </project>

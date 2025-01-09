@@ -23,7 +23,7 @@
     <parent>
         <groupId>com.adobe.aem.guides</groupId>
         <artifactId>aem-guides-wknd</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <version>3.3.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -68,6 +68,10 @@
                             <artifactId>aem-guides-wknd.ui.content</artifactId>
                             <version>${project.version}</version>
                         </dependency>
+                        <dependency>
+                            <groupId>com.adobe.aem.guides</groupId>
+                            <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
+                        </dependency>
                     </dependencies>
                 </configuration>
             </plugin>
@@ -104,5 +108,20 @@
             <version>${project.version}</version>
             <type>zip</type>
         </dependency>
+        <dependency>
+            <groupId>com.adobe.aem.guides</groupId>
+            <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
+            <version>${wknd-shared.version}</version>
+            <type>zip</type>
+        </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>classic</id>
+            <properties>
+                <wknd-shared.version>${wknd-shared.65.version}</wknd-shared.version>
+            </properties>
+        </profile>
+    </profiles>
 </project>
