@@ -16,7 +16,7 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.adobe.aem.guides</groupId>
+    <groupId>com.training.adobe.aem.guides</groupId>
     <artifactId>aem-guides-wknd</artifactId>
     <packaging>pom</packaging>
     <version>3.3.0-SNAPSHOT</version>
@@ -39,11 +39,11 @@
         <module>ui.apps</module>
         <module>ui.apps.structure</module>
         <module>ui.config</module>
-        <module>ui.content</module>
+        <!-- <module>ui.content</module>
         <module>ui.content.sample</module>
         <module>it.tests</module>
         <module>dispatcher</module>
-        <module>ui.tests</module>
+        <module>ui.tests</module> -->
     </modules>
 
     <properties>
@@ -766,7 +766,7 @@ Bundle-DocURL:
 
             <!-- WKND Shared -->
             <dependency>
-                <groupId>com.adobe.aem.guides</groupId>
+                <groupId>com.training.adobe.aem.guides</groupId>
                 <artifactId>aem-guides-wknd-shared.ui.content</artifactId>
                 <version>${wknd-shared.version}</version>
                 <type>zip</type>
